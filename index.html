@@ -457,6 +457,9 @@ ASUHeader.browser = false;
 <script>
 function openclasses()
 {regular_upd();
+var txt_value = document.getElementById('example_filter').getElementsByTagName("input")[0].value;
+		document.getElementById('example_filter').getElementsByTagName("input")[0].value = "";
+		document.getElementById('example_filter').getElementsByTagName("input")[0].dispatchEvent(new Event('input'));
 var sopen = document.querySelector('[title="Field #11"]');
 var course = document.querySelector('[title="Field #1"]');
 
@@ -477,10 +480,16 @@ var classes = document.getElementById('classes').getElementsByTagName("tr");
 			}
 if (course.className != "sorting_asc")
 {course.click();}
+document.getElementById('example_filter').getElementsByTagName("input")[0].value = txt_value;
+		document.getElementById('example_filter').getElementsByTagName("input")[0].dispatchEvent(new Event('input'));
 			}
 			
 function allclasses()
-{var sopen = document.querySelector('[title="Field #11"]');
+{
+var txt_value = document.getElementById('example_filter').getElementsByTagName("input")[0].value;
+		document.getElementById('example_filter').getElementsByTagName("input")[0].value = "";
+		document.getElementById('example_filter').getElementsByTagName("input")[0].dispatchEvent(new Event('input'));
+		var sopen = document.querySelector('[title="Field #11"]');
 var course = document.querySelector('[title="Field #1"]');
 
 //node.className = "sorting_asc";
@@ -498,6 +507,8 @@ var classes = document.getElementById('classes').getElementsByTagName("tr");
 			}
 if (course.className != "sorting_asc")
 {course.click();}
+document.getElementById('example_filter').getElementsByTagName("input")[0].value = txt_value;
+		document.getElementById('example_filter').getElementsByTagName("input")[0].dispatchEvent(new Event('input'));
 			}
 
 </script>
@@ -637,7 +648,8 @@ if (course.className != "sorting_asc")
 		}
 		function regular_upd()
 		{var totalRows = $('#example tbody tr:visible').length;
-		document.getElementById("example_info").innerHTML = "Showing 1 to "+totalRows+" of 24 entries";}
+		
+		document.getElementById("example_info").innerHTML = "Showing "+totalRows+" of 24 entries";}
 		
 	</script>
 	<div id="all_classes" onmouseover = "regular_upd()" style="width: 70%; float:left; padding-bottom:20px;">
@@ -1110,7 +1122,7 @@ if (course.className != "sorting_asc")
 		}
 		function disabler()
 		{
-		
+		regular_upd();
 		document.getElementsByName('example_length')[0].value = '25';
 		document.getElementsByName('example_length')[0].click;
 		$( '[name="example_length"]' ).change();
